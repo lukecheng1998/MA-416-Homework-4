@@ -1,14 +1,16 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amssymb}
 
 \title{MA 416 Homework 4}
-\author{Luke Cheng}
-\date{October 2019}
+\author{Luke Cheng, Tiger Cheng, Aditya Deepak, 
+\\Anirwan Yekkala, Eric Zhu, Joshua Zhao}
+\date{October 21, 2019}
 
 \begin{document}
 
 \maketitle
-
+\newpage
 \section{Two balls are chosen randomly from an urn containing 8 white, 4 black, and 2 orange balls. Suppose that we win \$2 for each black ball selected and we lose \$1 for each white ball selected. Let X denote our winnings. What are the possible values of X, and what are the probabilities associated with each value?}
 
 \paragraph{Solution: 
@@ -33,5 +35,96 @@ $$P(X=2)=\frac{1}{12}$$
 $$P(X=3)=P(P1 = 4 \cap P2 = 1, 2, 3 \cap P3 = 1, 2, 3 - P2 \cap P4 = 1, 2, 3 - P3 - P2)$$\newline
 $$P(X = 3) = \frac{1}{20}$$
 $$P(X = 4) = P(P1 = 5) = \frac{1}{5}$$\newpage
+}
+\setcounter{section}{24}
+\section{Two coins are to be flipped. The first coin will land on heads with probability .6, the second with probability .7. Assume that the results of the flips are independent, and let X equal the total number of heads that result.\newline
+a. Find P{X=1}.\newline
+b. Determine E[X].}
+\paragraph{Find P(X=1)\newline
+Solution:\newline
+a. We want to find the probability of one H so the only ones that we can test are probability of HT or TH.
+$$S = {HH, HT, TH, TT}$$
+$$P(X=1) = P(HT, TH)$$
+$$P(HT) + P(TH) = (0.6 * 0.3) + (0.4 * 0.7) = 0.46$$
+b. Find the summation of the probability of Heads only, tails only, or heads and tails.
+$$P(X = 1) = P(HT, TH) = 0.46$$
+$$P(X = 0) = P(TT) = (0.4 * 0.3) = 0.12$$
+$$P(X = 2) = P(HH) = 0.6 * 0.7 = 0.42$$
+$$E(X) = (0*12) + (1*0.46) + (2*0.42) = 1.3$$
+}\newpage
+\setcounter{section}{34}
+\section{A box contains 5 red and 5 blue marbles. Two marbles are withdrawn randomly. If they are the same color, then you win \$1.10; if they are different colors, then you win −\$1.00. (That is, you lose \$1.00.)\newline
+Calculate\newline
+a. the expected value of the amount you win;\newline
+b. the variance of the amount you win.
+}
+\paragraph{
+a. We assume we pull two reds or two blues and add the probabilities that they are different.
+$$P(X = 1.1) = \frac{{5 \choose 2}}{{10 \choose 2}} + \frac{{5 \choose 2}}{{10 \choose 2}} = \frac{4}{9}$$
+$$P(X = -1) = \frac{{5 \choose 1} * {5 \choose 1}}{{10 \choose 2}} = \frac{5}{9}$$
+$$E(X) = 1.1 * \frac{4}{9} - 1.0 * \frac{5}{9} = -0.067$$
+b. Variance
+$$E(X^2) = (1.1)^2 * \frac{4}{9} - (1.0)^2 * \frac{5}{9} = 0.537778 - 0.555556 = 1.0933$$
+$$Var(X) = E(X^2) - (E(X))^2$$
+$$1.0933 - (-0.067)^2 = 1.089$$
+}\newpage
+\setcounter{section}{52}
+\section{Suppose that a biased coin that lands on heads with probability is flipped 10 times. Given that
+a total of 6 heads results, find the conditional probability that the first 3 outcomes are\newline
+a. h, t, t(meaning that the first flip results in heads, the second in tails, and the third in tails);\newline
+b. t, h, t.}
+\paragraph{
+a. Let A be that the first 3 outcomes are HTT. Let B be that there are 6 heads for the 10 flips. Let C be that there are 5 heads in the last 7 flips.
+$$P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(AC)}{P(B)}$$
+$$\frac{{P(A)}*{P(C)}}{P(B)} = \frac{p(1-p)^2*{7 \choose 5}p^5(1-p)^2}{{10 \choose 6}*p^6(1-p)^4}$$
+$$=\frac{{7\choose 5}}{{10 \choose 6}} = \frac{1}{10}$$
+b. The same rule also applies for part b as from part a.
+$$\frac{p(1-p)^2*{7 \choose 5}p^5(1-p)^2}{{10 \choose 6}*p^6(1-p)^4}$$
+$$=\frac{{7\choose 5}}{{10 \choose 6}} = \frac{1}{10}$$
+}\newpage
+\setcounter{section}{63}
+\section{The probability of being dealt a full house in a hand of poker is approximately .0014. Find an
+approximation for the probability that in 1000 hands of poker, you will be dealt at least 2 full houses.}\newline
+\paragraph{
+Use Poison Approximation where
+$$P(X \geq 2) = 1- P(X \leq 1)$$
+$$1-P(X=0) + P(X = 1)$$
+$$1-e^{1.4} + 1.4e^{1.4}$$
+$$1-0.5918=0.4082$$
+}\newpage
+\setcounter{section}{73}
+\section{Consider a roulette wheel consisting of 38 numbers 1 through 36, 0, and double 0. If Smith always bets that the outcome will be one of the numbers 1 through 12, what is the probability that\newline
+a. Smith will lose his first 5 bets;\newline
+b. his first win will occur on his fourth bet?\newline
+}
+\paragraph{
+a. Probability of success:
+$$\frac{12}{38}$$
+Since every trial is independent we can subtract the difference and calculate every turn:
+$$1 - \frac{12}{38} = \frac{26}{38}$$
+$$(\frac{26}{38})^5 = 0.1500$$
+b. To win the fourth bet, we assume he loses the first three bets.
+$$(\frac{26}{38})^3*\frac{12}{38} = 0.1012$$
+}
+\newpage
+\setcounter{section}{88}
+\section{An urn contains 10 red, 8 black, and 7 green balls. One of the colors is chosen at random (meaning that the chosen color is equally likely to be any of the 3 colors), and then 4 balls are randomly chosen from the urn. Let X be the number of these balls that are of the chosen color.\newline
+a. Find P(X=0).\newline
+b. Let Xi equal 1 if the ith ball selected is of the chosen color, and let it equal 0 otherwise. Find P(Xi=1), i=1,2,3,4.\newline
+c. Find E[X].
+}
+\paragraph{
+a. P(X = 0) and have C equal the color drawn
+$$P(X = 0) = P(X = 0 | C = Red)*P(C = Red) + P(X = 0 | C = Black) * P(C = Black)$$$$+ P(X = 0 | C = Green) * P(C = Green)$$
+$$\frac{{15 \choose 4}}{{25 \choose 4}} * \frac{1}{3} + \frac{{17 \choose 4}}{{25 \choose 4}} * \frac{1}{3} + \frac{{18 \choose 4}}{{25 \choose 4}} * \frac{1}{3} = 0.1793$$
+b. P(Xi = 1)
+There is only one case where the proper color will be chosen, as a result:
+$$P(Xi = 1) = \frac{1}{3}$$
+c. x = x1 + x2 + x3 + x4\newline
+$$E(X) = P(Xi = 1) + 0 * P(Xi = 0)$$
+$$1 * \frac{1}{3} = \frac{1}{3}$$
+So as a result since E is independent
+$$E(X) = E(\sum_{n=1}^{4} Xi) = \sum_{n=1}^{4} E(Xi)$$
+$$\frac{1}{3} + \frac{1}{3} + \frac{1}{3} + \frac{1}{3} = \frac{4}{3}$$
 }
 \end{document}
